@@ -9,7 +9,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   double dolar = 0;
   double euro = 0;
 
@@ -35,7 +34,7 @@ class _HomeState extends State<Home> {
                   ),
                 );
               default:
-                if (snapshot.hasError){
+                if (snapshot.hasError) {
                   return const Center(
                     child: Text(
                       'ERROR...',
@@ -43,15 +42,47 @@ class _HomeState extends State<Home> {
                       textAlign: TextAlign.center,
                     ),
                   );
-                } else{
+                } else {
                   dolar = snapshot.data!['results']['currencies']['USD']['buy'];
                   euro = snapshot.data!["results"]['currencies']['EUR']['buy'];
 
                   return SingleChildScrollView(
+                    padding: EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Icon(Icons.monetization_on, size: 150, color: Colors.amber,),
+                      children: const [
+                        Icon(
+                          Icons.monetization_on,
+                          size: 150,
+                          color: Colors.amber,
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                              labelText: 'Reais',
+                              labelStyle:
+                                  TextStyle(color: Colors.amber, fontSize: 20),
+                              border: OutlineInputBorder(),
+                              prefixText: 'R\$'),
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                              labelText: 'Dolar',
+                              labelStyle:
+                              TextStyle(color: Colors.amber, fontSize: 20),
+                              border: OutlineInputBorder(),
+                              prefixText: '\$'),
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                              labelText: 'Euro',
+                              labelStyle:
+                              TextStyle(color: Colors.amber, fontSize: 20),
+                              border: OutlineInputBorder(),
+                              prefixText: 'R\$'),
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
                       ],
                     ),
                   );
